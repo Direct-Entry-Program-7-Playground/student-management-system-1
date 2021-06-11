@@ -7,33 +7,34 @@ import java.util.List;
 
 public class StudentService {
 
-    List<Student> students = new ArrayList<>();
+    private static List<Student> studentDB = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "StudentService{} "+ studentDB.toString();
+    }
 
     public void saveStudent(Student student) {
-        students.add(student);
+        studentDB.add(student);
     }
 
     public void updateStudent(Student student) {
-        for (Student studentFromList :
-                students) {
-            if (studentFromList.getNic().equals(student.getNic())) {
-                deleteStudent(student.getNic());
-                students.add(student);
-            }
-        }
+        Student s = findStudent(student.getNic());
+        int index = studentDB.indexOf(s);
+        studentDB.set(index, student);
     }
 
     public void deleteStudent(String studentId) {
-        students.removeIf(student -> student.getNic().equals(studentId));
+        studentDB.removeIf(student -> student.getNic().equals(studentId));
     }
 
     public List<Student> findAllStudents() {
-
-        return students;
+        return studentDB;
     }
 
     public Student findStudent(String studentId) {
-        for (Student student : students
+
+        for (Student student : studentDB
         ) {
             if (student.getNic().equals(studentId)) {
                 return student;
@@ -44,9 +45,10 @@ public class StudentService {
 
     public List<Student> findStudents(String query) {
         List<Student> queriedStudents = new ArrayList<>();
-        for (Student student : students
+
+        for (Student student : studentDB
         ) {
-            if (student.getNic().contains(query) || student.getFullName().contains(query) || student.getAddress().contains(query)) {
+            if (student.getNic().contains(query) || student.getFullName().contains(query) || student.getAddress().contains(query) || student.getContact().contains(query) || student.getEmail().contains(query) || student.getDateOfBirth().toString().contains(query)) {
                 queriedStudents.add(student);
             }
         }
