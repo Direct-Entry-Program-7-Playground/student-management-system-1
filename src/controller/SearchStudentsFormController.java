@@ -17,6 +17,5 @@ public class SearchStudentsFormController {
         tblResults.getItems().add(new Object());
         tblResults.getItems().add(new Object());
         tblResults.getItems().add(new Object());
-        tblResults.getItems().add(new Object());
     }
 }

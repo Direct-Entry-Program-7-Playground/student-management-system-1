@@ -2,11 +2,17 @@ package service;
 
 import model.Student;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentService {
-
+    static {
+        StudentService studentService = new StudentService();
+        studentService.saveStudent(new Student("123456789V", "Chandimal", "Matara", "23161548", "chandi@email.com", LocalDate.now()));
+        studentService.saveStudent(new Student("485912632V", "PKP", "Matara", "48563217", "pkp@email.com", LocalDate.now()));
+        studentService.saveStudent(new Student("3576892125V", "MRR", "Kurunegala", "24576891", "mrr@email.com", LocalDate.now()));
+    }
     private static List<Student> studentDB = new ArrayList<>();
 
     @Override

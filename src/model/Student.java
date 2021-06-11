@@ -1,14 +1,15 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Student {
-    private LocalDate dateOfBirth;
-    private String contact;
-    private String email;
+public class Student implements Serializable {
     private String nic;
     private String fullName;
     private String address;
+    private LocalDate dateOfBirth;
+    private String contact;
+    private String email;
 
     public Student() {
     }
